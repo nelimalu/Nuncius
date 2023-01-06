@@ -4,6 +4,7 @@ import json
 from hashlib import sha512
 from os import system as sys
 import rsa
+from Helper import VERSION, RECV_BYTES
 
 
 def confirm_identity(sock, credentials):
@@ -18,7 +19,7 @@ def confirm_identity(sock, credentials):
 
     sock.send(bytes(json.dumps(send_data), "utf-8"))
 
-    recieved = json.loads(sock.recv(8192).decode())
+    recieved = json.loads(sock.recv(RECV_BYTES).decode())
     if recieved["purpose"] == "login" and not recieved["status"]:
         print("denied")
         sock.close()
@@ -33,7 +34,7 @@ def confirm_identity(sock, credentials):
 
 def verify_credentials(sock):
     sys('cls')
-    print("[ nuncius -- login ]")
+    print(f"[ nuncius {VERSION} -- login ]")
     username = input("> Username: ")
     password = pwinput("> Password: ")
     print("> Login entry:", end=" ")

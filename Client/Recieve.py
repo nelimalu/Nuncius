@@ -48,7 +48,10 @@ def handle_logout(message_data):
     with open("clients.json", 'r') as file:
         clients = json.load(file)
 
-    del clients[message_data['username']]
+    try:
+        del clients[message_data['username']]
+    except KeyError:
+        pass
 
     with open("clients.json", 'w') as file:
         json.dump(clients, file, indent=4)

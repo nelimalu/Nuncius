@@ -5,13 +5,11 @@ import Login
 from threading import Thread
 import Recieve
 import json
-from Helper import get_credentials
+from Helper import get_credentials, RECV_BYTES
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(('99.241.147.138', 5431))
 s.settimeout(5)
-
-RECV_BYTES = 8192
 
 messages = []
 run = True

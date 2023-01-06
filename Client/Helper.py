@@ -3,6 +3,9 @@ import rsa
 import datetime
 from pytz import timezone
 
+VERSION = 'v1.2'
+RECV_BYTES = 8192
+
 
 def parse_timestamp(timestamp):
     return datetime.datetime.utcfromtimestamp(timestamp).replace(tzinfo=timezone('UTC')).astimezone(timezone('US/Eastern')).strftime('%H:%M:%S')
