@@ -48,8 +48,7 @@ def handle_input(win, raw_input, message, messages, pad_pos, sock):
         return InputCommand(message, messages, pad_pos)
 
     # --TYPE
-    if raw_input != 0:
-        message += chr(raw_input).strip()
+    message += chr(32 if raw_input == 0 else raw_input)
     if len(message) >= win.getmaxyx()[1] - 3:
         message = message[:win.getmaxyx()[1] - 3]
 
